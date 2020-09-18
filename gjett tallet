@@ -1,0 +1,27 @@
+import random
+randomnr=random.randint(0, 100)
+
+print("Gjett tallet!")
+print("det skal være ett tall mellom 0 og 100 ")
+print("eller trykk Q for å avslutte")
+
+answer=input("skriv inn tallet du tror vi skal fram til")
+antall=0
+while (answer!= "q") and (answer != "Q"):
+	antall=antall+1
+	if int(answer) == randomnr:
+		print("")
+		print("så bra! du gjettet riktig tall!, tallet var" +str(randomnr))
+		print("du brukte " +str(antall)+ " forsøk før du gjettet riktig")
+		answer=input("forsøk med et nytt tall, eller avslutt med q")
+		randomnr=random.randint(0, 100)
+		antall=0
+		
+	elif int(answer)<randomnr:
+		print("beklager, du gjettet " +answer+ " som er lavere enn randomtallet")
+		answer=input("forsøk igjen!")
+	elif int(answer)>randomnr:
+		print("beklager, du gjettet " +answer+ " som er høyere enn randomtallet")
+		answer=input("forsøk igjen!")
+		
+print("Prøv gjerne igjen!")
