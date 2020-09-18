@@ -1,0 +1,54 @@
+import random
+randomnr=random.randint(0, 100)
+
+def behandle_input(input_text):
+	input_ok=False
+	while not input_ok:
+		svar=input(input_text)
+		if svar.isdigit() and (int(svar)>=1) and (int(svar)<=100):
+			input_ok=True
+		elif (svar=="Q") or (svar=="q"):
+			input_ok=True
+		else:
+			input_ok=False
+	return(svar)
+
+def hvis_større(nr1, nr2):
+	if nr1>nr2:
+		return (True)
+	elif nr1<nr2:
+		return(False)
+	
+	 
+def hvis_samme(nr1, nr2):
+	if nr1==nr2:
+		return(True)
+	else:
+		return(False)
+	
+
+print("Gjett tallet!")
+print("det skal være ett tall mellom 0 og 100 ")
+print("eller trykk Q for å avslutte")
+
+svar=behandle_input(" Skriv inn et tall mellom 1 og 100, eller trykk Q for å avslutte")
+antall=0
+
+while (svar!= "q") and (svar != "Q"):
+	antall=antall+1
+	if hvis_samme (int(svar), randomnr):
+		print("")
+		print("så bra! du gjettet riktig tall!, tallet var" +str(randomnr))
+		print("du brukte " +str(antall)+ " forsøk før du gjettet riktig")
+		svar=input("forsøk med et nytt tall, eller avslutt med q")
+		randomnr=random.randint(0, 100)
+		antall=0
+		
+	elif int(svar)<randomnr:
+		print("beklager, du gjettet " +svar+ " som er lavere enn randomtallet")
+		svar=input("forsøk igjen!")
+	elif int(svar)>randomnr:
+		print("beklager, du gjettet " +svar+ " som er høyere enn randomtallet")
+		svar=input("forsøk igjen!")
+		
+print("Prøv gjerne igjen!")
